@@ -9,7 +9,7 @@ class Solver:
     def __init__(self, board):
         self.board = board
 
-    def check_mistakes(self):
+    def check_mistakes(self): # if the board in question is legal
         count= [[0 for i in range(len(self.board[0])+1)]for j in range(len(self.board))]
 
         for i in range(len(self.board)):
@@ -26,7 +26,7 @@ class Solver:
 
 
 
-    def solve(self):
+    def solve(self):  # solves given board 
         start = self.find_spot()
 
         if start is None:
@@ -42,7 +42,7 @@ class Solver:
                     self.board[row][col] = 0
         return False
 
-    def print_board(self):
+    def print_board(self): #prints given board 
         for i in range(len(self.board)):
             if i % 3 == 0 and i != 0:
                 print('- ' * 10)
@@ -52,7 +52,7 @@ class Solver:
                 print(self.board[i][j], end=" ")
             print("\n")
 
-    def find_spot(self):
+    def find_spot(self):   # find the next blank spot where we can try enter a number ('0')
         len_row = len(self.board)
         for i in range(len_row):
             for j in range(len(self.board[i])):
@@ -61,7 +61,7 @@ class Solver:
                     return found
         return None
 
-    def is_valid(self, num, cord):
+    def is_valid(self, num, cord):  # checks if a number selected is valid by row , column,cube
         row = cord.row
         col = cord.col
         #check in row
